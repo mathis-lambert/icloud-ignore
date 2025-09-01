@@ -24,13 +24,6 @@ brew tap mathis-lambert/icloud-ignore
 brew install icignore
 ```
 
-### Install latest (HEAD)
-
-```bash
-brew tap mathis-lambert/icloud-ignore
-brew install --HEAD icignore
-```
-
 ---
 
 ## 🔧 Usage
@@ -136,24 +129,32 @@ Project structure:
 ```
 cmd/icignore/        # CLI entry
 internal/icignore/   # Core operations (ignore/unignore/status)
-HomebrewFormula/     # Example formula (HEAD and placeholder stable)
-.github/workflows/   # CI (build/test) & release (Goreleaser)
+.github/workflows/   # Release (GoReleaser)
 ```
 
 ---
 
 ## 📦 Release & Homebrew
 
-Tagged releases are built and published via Goreleaser. A Homebrew tap is updated automatically.
+Tagged releases are built and published via GoReleaser. The Homebrew tap repository is updated automatically.
 
-1. Ensure your changes are merged to `main` and docs are updated.
-2. Tag a version: `git tag v0.x.y && git push origin v0.x.y`
-3. GitHub Actions will run Goreleaser to publish archives and update the tap.
+- Source repo: `mathis-lambert/icloud-ignore`
+- Tap repo: `mathis-lambert/homebrew-icloud-ignore`
 
-Manual build:
+Release process:
+- Merge changes to `main` and update docs.
+- Tag a version: `git tag v0.x.y && git push origin v0.x.y`
+- GitHub Actions runs GoReleaser to publish archives and update the tap.
+
+Maintainer setup (once):
+- Create a Personal Access Token (classic) with `repo` scope and add it as a secret in this repo named `HOMEBREW_TAP_TOKEN`.
+  - It must have write access to both repositories above.
+- The workflow `.github/workflows/release.yml` uses this token to publish releases and push the formula to the tap.
+
+Manual release (local):
 
 ```bash
-make release   # requires goreleaser installed and GH token
+GITHUB_TOKEN=<your_pat_with_repo_scope> make release
 ```
 
 Tap name: `mathis-lambert/icloud-ignore` (backed by repo `homebrew-icloud-ignore`).
