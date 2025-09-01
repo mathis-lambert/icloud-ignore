@@ -1,3 +1,4 @@
+version: 2
 project_name: icignore
 
 before:
@@ -59,4 +60,3 @@ release:
   github:
     owner: mathis-lambert
     name: icloud-ignore
-

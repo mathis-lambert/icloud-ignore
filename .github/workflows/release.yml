@@ -30,6 +30,5 @@ jobs:
           version: latest
           args: release --clean
         env:
-          # Use a PAT with repo access to both icloud-ignore and homebrew-icloud-ignore
-          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
-
+          # Prefer a PAT with repo access to both repos; fallback to default token
+          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN || secrets.GITHUB_TOKEN }}
