@@ -34,6 +34,8 @@ brews:
     repository:
       owner: mathis-lambert
       name: homebrew-icloud-ignore
+      branch: main
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     commit_author:
       name: goreleaser
       email: noreply@goreleaser

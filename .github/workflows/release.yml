@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   goreleaser:
+    environment: env
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,5 +31,7 @@ jobs:
           version: latest
           args: release --clean
         env:
-          # Prefer a PAT with repo access to both repos; fallback to default token
-          GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN || secrets.GITHUB_TOKEN }}
+          # Token used by GoReleaser to publish release in this repo
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # PAT (environment secret) used to push to the private tap repo
+          HOMEBREW_TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
