@@ -31,21 +31,17 @@ archives:
 
 brews:
   - name: icignore
-    tap:
+    repository:
       owner: mathis-lambert
       name: homebrew-icloud-ignore
     commit_author:
       name: goreleaser
       email: noreply@goreleaser
-    url_template: "https://github.com/{{ .Owner }}/{{ .Repo }}/releases/download/{{ .Tag }}/{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}.tar.gz"
     homepage: "https://github.com/mathis-lambert/icloud-ignore"
     description: "Exclude iCloud folders via .nosync suffix while keeping symlinks for seamless access."
     license: MIT
     test: |
       system "#{bin}/icignore", "version"
-    dependencies:
-      - name: go
-        type: build
     install: |
       bin.install "icignore"
 
