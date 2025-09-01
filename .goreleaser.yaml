@@ -23,7 +23,7 @@ builds:
 
 archives:
   - id: archive
-    format: tar.gz
+    formats: [tar.gz]
     name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
     files:
       - LICENSE
@@ -55,6 +55,7 @@ changelog:
   use: git
 
 release:
+  mode: append
   github:
     owner: mathis-lambert
     name: icloud-ignore
