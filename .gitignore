@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Binaries
+/bin/
+/dist/
+
+# Go
+*.test
+*.out
+
+# Editor
+.idea/
+.vscode/
+tmp-test/
+

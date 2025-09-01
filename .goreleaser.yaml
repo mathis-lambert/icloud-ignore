@@ -1,0 +1,62 @@
+project_name: icignore
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: icignore
+    main: ./cmd/icignore
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: archive
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+
+brews:
+  - name: icignore
+    tap:
+      owner: mathis-lambert
+      name: homebrew-icloud-ignore
+    commit_author:
+      name: goreleaser
+      email: noreply@goreleaser
+    url_template: "https://github.com/{{ .Owner }}/{{ .Repo }}/releases/download/{{ .Tag }}/{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}.tar.gz"
+    homepage: "https://github.com/mathis-lambert/icloud-ignore"
+    description: "Exclude iCloud folders via .nosync suffix while keeping symlinks for seamless access."
+    license: MIT
+    test: |
+      system "#{bin}/icignore", "version"
+    dependencies:
+      - name: go
+        type: build
+    install: |
+      bin.install "icignore"
+
+checksum:
+  name_template: "checksums.txt"
+
+changelog:
+  sort: asc
+  use: git
+
+release:
+  github:
+    owner: mathis-lambert
+    name: icloud-ignore
+
