@@ -42,7 +42,7 @@ func main() {
 
     cmd := strings.ToLower(args[0])
     if cmd == "version" {
-        fmt.Println(version)
+        fmt.Printf("icignore version %s\n", version)
         return
     }
 

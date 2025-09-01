@@ -2,7 +2,7 @@ class Icignore < Formula
   desc "Exclude iCloud folders via .nosync + symlink"
   homepage "https://github.com/mathis-lambert/icloud-ignore"
   license "MIT"
-  version "0.1.0"
+  version "1.0.0"
 
   # Stable release (fill in on tag):
   # url "https://github.com/mathis-lambert/icloud-ignore/archive/refs/tags/v0.1.0.tar.gz"

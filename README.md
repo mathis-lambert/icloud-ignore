@@ -86,13 +86,13 @@ icignore status <path>    # Check folder status
 ```
 
 Global flags:
-  --dry-run    Print actions without changing anything
-  --verbose    Extra logging
+  `--dry-run`    Print actions without changing anything
+  `--verbose`    Extra logging
 
 Version:
-  icignore version
+  `icignore version`
 
-Exit codes: 0 on success; non-zero on error.
+Exit codes: `0` on success; non-zero on error.
 
 Note: A path with or without `.nosync` is accepted for all commands.
 
