@@ -55,7 +55,7 @@ changelog:
   use: git
 
 release:
-  mode: append
+  mode: replace
   github:
     owner: mathis-lambert
     name: icloud-ignore
