@@ -28,7 +28,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           distribution: goreleaser
-          version: v3.0.0
+          version: v2.11.2
           args: release --clean
         env:
           # Token used by GoReleaser to publish release in this repo
