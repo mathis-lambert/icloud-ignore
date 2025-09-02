@@ -24,31 +24,28 @@ builds:
 archives:
   - id: archive
     formats: [tar.gz]
-    name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - LICENSE
       - README.md
 
-brews:
-  - name: icignore
-    repository:
-      owner: mathis-lambert
-      name: homebrew-icloud-ignore
-      branch: main
-      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
-    commit_author:
-      name: goreleaser
-      email: noreply@goreleaser
-    homepage: "https://github.com/mathis-lambert/icloud-ignore"
-    description: "Exclude iCloud folders via .nosync suffix while keeping symlinks for seamless access."
-    license: MIT
-    test: |
-      system "#{bin}/icignore", "version"
-    install: |
-      bin.install "icignore"
+homebrew:
+  casks:
+    - name: icignore
+      tap:
+        owner: mathis-lambert
+        name: homebrew-icloud-ignore
+        branch: main
+        token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+      commit_author:
+        name: goreleaser
+        email: noreply@goreleaser
+      homepage: "https://github.com/mathis-lambert/icloud-ignore"
+      description: "Exclude iCloud folders via .nosync suffix while keeping symlinks for seamless access."
+      license: MIT
 
 checksum:
-  name_template: "checksums.txt"
+  name_template: "checksums_{{ .Version }}.txt"
 
 changelog:
   sort: asc
