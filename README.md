@@ -17,12 +17,20 @@ It leverages the `.nosync` suffix recognized by macOS, while keeping folder acce
 
 ## 🚀 Installation
 
-### Using Homebrew (recommended)
+### Using Homebrew (macOS)
 
 ```bash
 brew tap mathis-lambert/icloud-ignore
-brew install icignore
+brew install --cask icignore
 ```
+
+Upgrade:
+
+```bash
+brew update && brew upgrade --cask icignore
+```
+
+Note: The Homebrew cask is macOS-focused. On Linux, download the tarball from the GitHub Releases page and place `icignore` on your `PATH`.
 
 ---
 
@@ -38,6 +46,8 @@ Effect:
 
 * The folder is renamed to `Projects.nosync` (ignored by iCloud).
 * A symbolic link `Projects` is recreated at the same location → Finder and apps continue to work as before.
+* Useful for node_modules and other transient files.
+* Avoids cluttering iCloud Drive with unnecessary files.
 
 ---
 
